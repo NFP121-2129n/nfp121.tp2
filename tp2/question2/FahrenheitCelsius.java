@@ -3,8 +3,8 @@ package question2;
 
 /**
  * Décrivez votre classe FahrenheitCelsius ici.
- * 
- * @author (votre nom) 
+ * Cette classe est responsable de convertir des temperatures fahrenheit en celsius
+ * @author Georges Ghafary 
  * @version (un numéro de version ou une date)
  */
 public class FahrenheitCelsius{
@@ -15,13 +15,16 @@ public class FahrenheitCelsius{
       *  @param args ...
       */
      public static void main(String[] args){
-       try{
-       
-      
-       }catch(NumberFormatException nfe){
-           System.out.println("error : " + nfe.getMessage());  // en cas d'erreur 
-       }
-       
+        for(int i = 0; i < args.length; i++){
+            try{
+                int fahrenheit = Integer.parseInt(args[i]);
+                float celsius = fahrenheitEnCelsius(fahrenheit);
+                if(celsius < -273.1) celsius = -273.1f;     
+                System.out.println(fahrenheit + "\u00B0F -> " + celsius + "\u00B0C");
+            }catch(NumberFormatException nfe){
+               System.out.println("error : " + nfe.getMessage());  // en cas d'erreur 
+            }  
+        }  
      }
      
      /** 
@@ -29,10 +32,9 @@ public class FahrenheitCelsius{
       *   @param f la valeur en degré Fahrenheit
       *   @return  la conversion en degré Celsius
       */
-     public static float fahrenheitEnCelsius( int f){
-       // ...
-       return 0.F;	// à compléter	en remplaçant la valeur retournée par la fonction de conversion
-       // ...
+     public static float fahrenheitEnCelsius(int f){
+        float c = (float)(5.0/9.0 * (f - 32));
+        return (float)(((int)(c * 10))/10.0);
      }
 
 }
